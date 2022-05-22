@@ -1,0 +1,9 @@
+:root{
+    --size: 0px;
+}
+
+.area{
+    width: var(--size);
+    height: var(--size);
+    position: absolute;
+}
