@@ -1,7 +1,8 @@
-const snake = new Snake(new Position(2, 1));
-snake.insertBody(new Position(1, 1));
+const x = 10;
+const y = 10;
+const field = new Field(x, y);
 
-document.addEventListener('keydown', (key) =>{
+/*document.addEventListener('keydown', (key) =>{
     let head: Position = snake.getBody()[0];
     let x = head.getX();
     let y = head.getY();
@@ -17,4 +18,4 @@ document.addEventListener('keydown', (key) =>{
     }else{
         throw new Error("Botão errado");
     }
-});
+});*/
