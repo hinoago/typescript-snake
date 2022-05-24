@@ -3,6 +3,9 @@
     "author": "Gabriel Oliveira",
     "version": "1.0.0",
     "scripts": {
-        "start": "tsc && start ./bin/Main.html"
+        "start": "npm install -g typescript && tsc && start ./bin/Main.html"
+    },
+    "dependencies": {
+        "typescript": "^4.6.4"
     }
 }
