@@ -69,6 +69,10 @@ class Field{
             return this.field.filter(area => area.getContent() == "empty");
         }
         clearInterval(this.game);
-        throw new Error("FIM");
+        this.endGame();
+    }
+
+    endGame(): void{
+        throw new Error("End Game");
     }
 }
