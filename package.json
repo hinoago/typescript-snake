@@ -1,7 +1,7 @@
 {
     "name": "new-snake-game",
     "author": "Gabriel Oliveira",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "scripts": {
         "start": "npm install -g typescript && tsc && start ./bin/Main.html"
     },
