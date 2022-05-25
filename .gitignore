@@ -1,1 +1,6 @@
 node_modules/
+Area.js
+Field.js
+Main.js
+Position.js
+Snake.js
