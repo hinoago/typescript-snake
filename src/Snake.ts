@@ -13,6 +13,10 @@ class Snake{
         return this.body;
     }
 
+    getSize(): number{
+        return this.body.length;
+    }
+
     move(value: string): void{
         let beforeX = 0;
         let beforeY = 0;

@@ -9,11 +9,27 @@ class Field{
             }
         }
         this.createSnake();
+        this.snakeMove();
+    }
+    
+    createSnake(): void{
+        this.snake = new Snake(new Position(1, 4));
+        this.snake.insertBody(new Position(1, 3));
+        this.snake.insertBody(new Position(1, 2));
+        this.snake.insertBody(new Position(1, 1));
+        this.renderSnake();
+    }
 
+    renderSnake(): void{
+        this.snake.getBody().forEach(pos => {
+            this.field.find(area => area.getX() == pos.getX() && area.getY() == pos.getY()).setContent("snake");
+        });
+    }
+
+    snakeMove(): void{
         document.addEventListener('keydown', (key) =>{
-            let head: Position = this.snake.getBody()[0];
-            let x = head.getX();
-            let y = head.getY();
+            let tail: Position = this.snake.getBody()[this.snake.getSize()-1];
+            this.field.find(area => area.getX() == tail.getX() && area.getY() == tail.getY()).setContent("empty");
         
             if(key.key == 'ArrowUp'){
                 this.snake.move("up");
@@ -26,16 +42,11 @@ class Field{
             }else{
                 throw new Error("Botão errado");
             }
-            console.log(this.snake.getBody());
+            this.renderSnake();
         });
     }
 
-    getField(): Array<Area>{
-        return this.field;
-    }
-    
-    createSnake(): void{
-        this.snake = new Snake(new Position(1, 1));
-        this.field.find(area => area.getX() == 1 && area.getY() == 1).setContent("snake");
+    getEmptyAreas(): Array<Area>{
+        return this.field.filter(area => area.getContent() == "empty");
     }
 }
