@@ -1,5 +1,6 @@
 class Field{
     field: Array<Area> = [];
+    game: number;
     snake: Snake;
 
     constructor(verticalAreas: number, horizontalAreas: number){
@@ -10,6 +11,7 @@ class Field{
         }
         this.createSnake();
         this.snakeMove();
+        this.insertFood();
     }
     
     createSnake(): void{
@@ -46,7 +48,27 @@ class Field{
         });
     }
 
+    insertFood(): void{
+        this.game = setInterval(() =>{
+            try{
+                let n = Math.floor(Math.random()*this.getEmptyAreas().length);
+                let empty = this.getEmptyAreas()[n];
+                let x = empty.getX();
+                let y = empty.getY();
+                let area = this.field.find(area => area.getX() == x && area.getY() == y);
+                console.log(area);
+                area.setContent("food");
+            }catch(err){
+                alert("FIM");
+            }
+        },100);
+    }
+
     getEmptyAreas(): Array<Area>{
-        return this.field.filter(area => area.getContent() == "empty");
+        if(this.field.filter(area => area.getContent() == "empty").length > 0){
+            return this.field.filter(area => area.getContent() == "empty");
+        }
+        clearInterval(this.game);
+        throw new Error("FIM");
     }
 }
